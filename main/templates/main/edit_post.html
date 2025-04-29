@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Postni tahrirlash - {{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">Postni tahrirlash</h1>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-secondary">Bekor 
+                            qilish</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
